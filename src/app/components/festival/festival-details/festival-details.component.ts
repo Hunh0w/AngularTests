@@ -55,4 +55,10 @@ export class FestivalDetailsComponent implements OnInit, OnChanges {
     })
   }
 
+  onSubmit(){
+    this.festival.name = this.festivalGroup.get("name")?.value;
+    this.festival.tableprice_1 = this.festivalGroup.get("entrancePrice")?.value;
+    this.festival.tableprice_2 = this.festivalGroup.get("roomPrice")?.value;
+  }
+
 }
