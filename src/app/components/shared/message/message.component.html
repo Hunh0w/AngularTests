@@ -1,0 +1,13 @@
+<p>message works!</p>
+
+<table *ngIf="messageService.messages.length > 0">
+    <tr>
+        <th>Message</th>
+    </tr>
+    <tr *ngFor="let msg of messageService.messages">
+        <span>{{ msg }}</span>
+    </tr>
+</table>
+<button (click)="messageService.log('test message')">Test Message</button>
+<button (click)="messageService.clear()">Clear</button>
+

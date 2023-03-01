@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Festival } from './models/festival';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'festivals-app';
+  festivals = [
+    new Festival("festival1"),
+    new Festival("festival2"),
+    new Festival("festival3")
+  ];
+
+  festivalSelected!: Festival
+
+  selectFestival(festival: Festival) {
+    this.festivalSelected = festival
+  }
 }

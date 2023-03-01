@@ -1,0 +1,9 @@
+<p>festival-details works!</p>
+<h1>Festival : {{festival.name}}</h1>
+
+<form [formGroup]="festivalGroup" *ngIf="this.festival">
+    <label>Name: <input type="text" formControlName="name"></label><br/>
+    <label>Entrance: <input type="text" formControlName="entrancePrice"></label><br/>
+    <label>Room: <input type="text" formControlName="roomPrice"></label><br/>
+    <button type="submit" [disabled]="!festivalGroup.valid">Submit</button>
+</form>
