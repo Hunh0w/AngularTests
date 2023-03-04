@@ -1,13 +1,13 @@
-<p>message works!</p>
 
-<table *ngIf="messageService.messages.length > 0">
-    <tr>
-        <th>Message</th>
-    </tr>
-    <tr *ngFor="let msg of messageService.messages">
-        <span>{{ msg }}</span>
-    </tr>
-</table>
-<button (click)="messageService.log('test message')">Test Message</button>
-<button (click)="messageService.clear()">Clear</button>
+
+<div *ngIf="messageService.messages.length > 0" style="margin-top: 10px; padding: 15px; border: 2px solid black; width: 80%;">
+  <h1>Messages</h1>
+  <ul *ngFor="let msg of messageService.messages" style="width: 70%">
+    <li style="width: 100%; overflow: scroll;">{{ msg }}</li>
+  </ul>
+
+  <button (click)="messageService.log('test message')">Test Message</button>
+  <button (click)="messageService.clear()">Clear</button>
+</div>
+
 

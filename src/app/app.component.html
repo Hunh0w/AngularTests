@@ -1,6 +1,33 @@
+<h1>Bienvenue</h1>
+
 <app-festivals-list
-  [festivals]="festivals"
+  [festivalsAsync]="festivals"
   (selectedFestivalEmitter)="selectFestival($event)"
 />
-<app-festival-details [festival]="festivalSelected" *ngIf="festivalSelected"></app-festival-details>
+
+<app-festival-details
+  [festival]="festivalSelected"
+  [currentEditeurs]="currentEditeurs"
+  *ngIf="festivalSelected"
+  (unSelectEmitter)="unSelectEditeur($event)"
+  (deleteFestival)="deleteFestival($event)"></app-festival-details>
+<div style="margin-top: 10px; padding: 15px; border: 2px solid black;">
+  <h1>Liste des Editeurs</h1>
+  <app-editeurs-select
+    [festival]="festivalSelected"
+    [currentEditeurs]="currentEditeurs"
+    (unSelectEditeurEmitter)="unSelectEditeur($event)"
+    (selectEditeurEmitter)="selectEditeur($event)"></app-editeurs-select>
+</div>
+<div style="margin-top: 10px; padding: 15px; border: 2px solid black;">
+  <h1>Creer un Festival</h1>
+  <app-festival-create></app-festival-create>
+</div>
+<div style="margin-top: 10px; padding: 15px; border: 2px solid black;">
+  <h1>Creer un Editeur</h1>
+  <app-editeurs-create (createEditeurEmitter)="onCreateEditeur($event)"></app-editeurs-create>
+</div>
+
 <app-message></app-message>
+
+

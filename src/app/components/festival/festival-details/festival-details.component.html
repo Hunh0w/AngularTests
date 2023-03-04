@@ -1,9 +1,19 @@
-<p>festival-details works!</p>
-<h1>Festival : {{festival.name}}</h1>
 
-<form [formGroup]="festivalGroup" *ngIf="this.festival">
+<div style="margin-top: 10px; padding: 15px; border: 2px solid black;">
+  <h1 *ngIf="this.festival">Festival : {{festival.name}}</h1>
+
+  <form [formGroup]="festivalGroup" *ngIf="this.festival">
     <label>Name: <input type="text" formControlName="name"></label><br/>
     <label>Entrance: <input type="text" formControlName="entrancePrice"></label><br/>
     <label>Room: <input type="text" formControlName="roomPrice"></label><br/>
-    <button type="submit" [disabled]="!festivalGroup.valid" (click)="onSubmit()">Submit</button>
-</form>
+    <button type="submit" [disabled]="!festivalGroup.valid" (click)="onUpdate()">Update</button>
+    <button type="submit" [disabled]="!festivalGroup.valid" (click)="onDelete()">Delete</button>
+  </form>
+  <br/>
+  <div *ngIf="currentEditeurs && currentEditeurs.length > 0">
+    <h2>Editeurs</h2>
+    <app-editeurs-list [festival]="festival" [currentEditeurs]="currentEditeurs" (unSelectEmitter)="unSelectEditeur($event)"></app-editeurs-list>
+  </div>
+
+</div>
+

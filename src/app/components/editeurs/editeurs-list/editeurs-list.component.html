@@ -1,0 +1,17 @@
+
+<table *ngIf="currentEditeurs">
+  <tr>
+    <th>ID</th>
+    <th>Nom</th>
+    <th>Contact</th>
+    <th>Jeux</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let editeur of currentEditeurs">
+    <td>{{ editeur.id }}</td>
+    <td>{{ editeur.name }}</td>
+    <td>{{ editeur.contact }}</td>
+    <td>{{ jeuxToString(editeur.jeux) }}</td>
+    <td><button (click)="onDelete(editeur)">Supprimer du Festival courant</button></td>
+  </tr>
+</table>

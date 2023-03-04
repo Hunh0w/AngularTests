@@ -2,6 +2,7 @@
 
 <table>
     <tr>
+        <th>ID</th>
         <th>Name</th>
         <th>Tables</th>
         <th>Prix Espace entrée</th>
@@ -16,6 +17,7 @@
         <th></th>
     </tr>
     <tr *ngFor="let festival of festivals">
+        <td>{{ festival.id }}</td>
         <td>{{ festival.name }}</td>
         <td>{{ festival.tableTotal }}</td>
         <td>{{ festival.tableprice_1 }}</td>
@@ -27,6 +29,6 @@
         <td>{{ festival.tablebooked_1 }}</td>
         <td>{{ festival.tablebooked_2 }}</td>
         <td>{{ festival.tablebooked_3 }}</td>
-        <td><button (click)="selectNewFestival(festival)">Select</button></td>
+      <td><button (click)="selectNewFestival(festival)">Select</button></td>
     </tr>
 </table>

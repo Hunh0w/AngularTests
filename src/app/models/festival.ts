@@ -1,10 +1,11 @@
-import { Optional } from "@angular/core";
+  import { Optional } from "@angular/core";
 
 export class Festival {
 
     static sqmTable = 6;
 
     public id?: string;
+    public editeurs: string[];
     public name: string;
     public tablemax_1: number;
     public tableprice_1: number;
@@ -23,12 +24,13 @@ export class Festival {
     public sqmbooked_3: number = 0;
     public revenue: number = 0;
     public visitor: boolean = false;
- 
+
     public get tableTotal() : number { return this.tablemax_1 + this.tablemax_2 + this.tablemax_3; }
- 
+
     public constructor(
        name: string,
        @Optional() id?: string,
+       @Optional() editeurs?: string[],
        @Optional() entranceLoc: number = 64,  // première partie de salle
        @Optional() mainRoomLoc: number = 72,   // deuxième partie de salle
        @Optional() cafetLoc: number = 40, // étage de la buvette
@@ -47,6 +49,7 @@ export class Festival {
        @Optional() revenue: number = 0,
        @Optional() visitor: boolean = false
     ){
+       this.editeurs = editeurs ? editeurs : [];
        this.name = name;
        this.id = id;
        this.tablemax_1 = entranceLoc;

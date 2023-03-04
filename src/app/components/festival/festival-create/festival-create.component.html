@@ -1,0 +1,5 @@
+
+<form [formGroup]="form_group">
+  <label>Name: <input type="text" formControlName="name"></label><br/>
+  <button type="submit" [disabled]="!form_group.valid" (click)="onCreate()">Create</button>
+</form>
