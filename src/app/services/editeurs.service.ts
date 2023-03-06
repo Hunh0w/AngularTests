@@ -56,6 +56,34 @@ export class EditeursService {
     )
   }
 
+  public deleteJeu(editeur: Editeur, jeu: Jeux){
+    this.editeurStore.doc<Jeux>(this.path+editeur.id+"/jeux/"+jeu.id).delete();
+  }
+
+  public addUpdateJeu(editeur: Editeur, jeu: Jeux) {
+    const jeuxCollection = this.db.collection(this.path+editeur.id+"/jeux/");
+
+    if (jeu.id == null) {
+      jeu.id = this.editeurStore.createId()
+    }
+    jeuxCollection.doc(jeu.id).set( Object .assign({}, jeu));
+  }
+
+  public addJeu(editeur: Editeur, jeu: Jeux){
+    const jeuxCollection = this.db.collection(this.path+editeur.id+"/jeux/");
+
+    if (jeu.id == null) {
+      jeu.id = this.editeurStore.createId()
+    }
+    jeuxCollection.doc(jeu.id).get()
+      .subscribe(doc => {
+        if (!doc.exists) {
+          jeuxCollection.doc(jeu.id).set(Object.assign({},
+            jeu));
+        }
+      });
+  }
+
   public getEditeurs(festival: Festival): Observable<Editeur[]> {
     return this.editeurCollection
       .valueChanges({ idField: 'id' }).pipe(
@@ -70,6 +98,13 @@ export class EditeursService {
             })
         })
       )
+  }
+
+  public addUpdateEditeur(editeur: Editeur) {
+    if (editeur.id == null) {
+      editeur.id = this.editeurStore.createId()
+    }
+    this.editeurCollection.doc(editeur.id).set( Object .assign({}, editeur));
   }
 
   public addNewEditeur(editeur: Editeur) {

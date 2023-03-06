@@ -9,6 +9,8 @@
   [festival]="festivalSelected"
   [currentEditeurs]="currentEditeurs"
   *ngIf="festivalSelected"
+  (deleteJeuEmitter)="onDeleteJeu($event)"
+  (updateEditeurEmitter)="onUpdateEditeur($event)"
   (unSelectEmitter)="unSelectEditeur($event)"
   (deleteFestival)="deleteFestival($event)"></app-festival-details>
 <div style="margin-top: 10px; padding: 15px; border: 2px solid black;">

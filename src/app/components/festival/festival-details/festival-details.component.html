@@ -15,5 +15,18 @@
     <app-editeurs-list [festival]="festival" [currentEditeurs]="currentEditeurs" (unSelectEmitter)="unSelectEditeur($event)"></app-editeurs-list>
   </div>
 
+  <div *ngIf="currentEditeurs && currentEditeurs.length > 0">
+    <h1>Jeux</h1>
+    <label>Editeur:
+      <select [(ngModel)]="selectedEditeur">
+        <option *ngFor="let editeur of currentEditeurs" value="{{ editeur.id }}">{{ editeur.name }}</option>
+      </select>
+    </label>
+    <app-jeux-list
+      (deleteJeuEmitter)="onDeleteJeux($event)"
+      [editeurId]="selectedEditeur"
+      [currentEditeurs]="currentEditeurs"></app-jeux-list>
+  </div>
+  <app-jeux-create *ngIf="currentEditeurs && currentEditeurs.length > 0" (updateEditeurEmitter)="onUpdateEditeur($event)" [festival]="festival" [currentEditeurs]="currentEditeurs"></app-jeux-create>
 </div>
 

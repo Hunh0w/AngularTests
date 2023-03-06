@@ -1,0 +1,23 @@
+<div>
+  <h1>Editer un Jeux</h1>
+  <form [formGroup]="form_group">
+    <label>Name: <input type="text" formControlName="name"></label><br/>
+    <label>Joueurs min: <input type="text" formControlName="nb_joueurs_min"></label><br/>
+    <label>Joueurs max: <input type="text" formControlName="nb_joueurs_max"></label><br/>
+    <label>Age min: <input type="text" formControlName="age_min"></label><br/>
+    <label>Age max: <input type="text" formControlName="age_max"></label><br/>
+    <label>Duration: <input type="text" formControlName="duration"></label><br/>
+    <label>Type:
+      <select formControlName="type">
+        <option *ngFor="let type of jeuxTypes;" value="{{ type }}">{{ type }}</option>
+      </select>
+    </label><br/>
+    <label>Editeur:
+      <select formControlName="editeurId" >
+          <option *ngFor="let editeur of currentEditeurs;" value="{{ editeur.id }}">{{ editeur.name }}</option>
+      </select>
+    </label><br/>
+
+    <button type="submit" [disabled]="!form_group.valid" (click)="onCreate()">Create or Update</button>
+  </form>
+</div>

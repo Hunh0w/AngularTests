@@ -18,10 +18,4 @@ export class Editeur {
     if(jeux) this.jeux = jeux;
   }
 
-  public addJeu(jeu: Jeux){
-    if(!this.jeux)
-      this.jeux = [];
-    this.jeux.push(jeu);
-  }
-
 }

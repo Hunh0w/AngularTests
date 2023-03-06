@@ -5,6 +5,7 @@ import { UsernameValidator } from 'src/app/validators/name.validator';
 import {ActivatedRoute} from "@angular/router";
 import {FestivaljsonService} from "../../../services/festivaljson.service";
 import {Editeur} from "../../../models/Editeur";
+import {Jeux} from "../../../models/Jeux";
 
 @Component({
   selector: 'app-festival-details',
@@ -17,7 +18,11 @@ export class FestivalDetailsComponent implements OnInit, OnChanges {
   @Input() currentEditeurs!: Editeur[]
   @Output() deleteFestival = new EventEmitter<Festival>();
   @Output() unSelectEmitter = new EventEmitter<Editeur>();
+  @Output() updateEditeurEmitter = new EventEmitter<any>();
+  @Output() deleteJeuEmitter = new EventEmitter<any>();
+
   festivalGroup!: FormGroup
+  selectedEditeur!: string
 
   constructor(
     public fb : FormBuilder,
@@ -81,6 +86,14 @@ export class FestivalDetailsComponent implements OnInit, OnChanges {
 
   unSelectEditeur(editeur: Editeur){
     this.unSelectEmitter.emit(editeur);
+  }
+
+  onUpdateEditeur(editeur: Editeur){
+    this.updateEditeurEmitter.emit(editeur);
+  }
+
+  onDeleteJeux(obj: any){
+    this.deleteJeuEmitter.emit(obj);
   }
 
 }

@@ -13,8 +13,8 @@ export class EditeursCreateComponent implements OnInit{
 
   @Output() createEditeurEmitter = new EventEmitter<Editeur>();
 
-  form_group!: FormGroup
-  currentEditeur!: Editeur
+  form_group!: FormGroup;
+  currentEditeur!: Editeur;
 
 
   constructor(private fb : FormBuilder,
@@ -28,8 +28,11 @@ export class EditeursCreateComponent implements OnInit{
   }
 
   onCreate(){
-    this.editeurService.addNewEditeur(this.currentEditeur);
-    this.createEditeurEmitter.emit(this.currentEditeur);
+    const name = this.form_group.get("name")?.value;
+    const contact = this.form_group.get("contact")?.value;
+    const editeur = new Editeur(name, undefined, contact);
+    this.editeurService.addNewEditeur(editeur);
+    this.createEditeurEmitter.emit(editeur);
     this.resetCurrentEditeur();
   }
 

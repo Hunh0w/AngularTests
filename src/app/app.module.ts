@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { FestivalsListComponent } from './components/festival/festivals-list/festivals-list.component';
 import { FestivalDetailsComponent } from './components/festival/festival-details/festival-details.component';
 import { MessageComponent } from './components/shared/message/message.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { RootComponent } from './components/root/root.component';
 import {RouterModule} from "@angular/router";
 import {HttpClientModule} from "@angular/common/http";
@@ -19,6 +19,8 @@ import { FestivalCreateComponent } from './components/festival/festival-create/f
 import { EditeursListComponent } from './components/editeurs/editeurs-list/editeurs-list.component';
 import { EditeursSelectComponent } from './components/editeurs/editeurs-select/editeurs-select.component';
 import { EditeursCreateComponent } from './components/editeurs/editeurs-create/editeurs-create.component';
+import { JeuxCreateComponent } from './components/jeux/jeux-create/jeux-create.component';
+import { JeuxListComponent } from './components/jeux/jeux-list/jeux-list.component';
 
 @NgModule({
   declarations: [
@@ -30,24 +32,27 @@ import { EditeursCreateComponent } from './components/editeurs/editeurs-create/e
     FestivalCreateComponent,
     EditeursListComponent,
     EditeursSelectComponent,
-    EditeursCreateComponent
+    EditeursCreateComponent,
+    JeuxCreateComponent,
+    JeuxListComponent
   ],
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    RouterModule.forRoot([
-      {path: 'festivals', component: FestivalsListComponent},
-      {path: 'festival/:festivalId', component: FestivalDetailsComponent},
-      {path: 'App', component: AppComponent},
-      {path: '', redirectTo: '/App', pathMatch: 'full'},
-      {path: 'editeurs', component: EditeursListComponent}
-    ]),
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideFirestore(() => getFirestore()),
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
-  ],
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        RouterModule.forRoot([
+            {path: 'festivals', component: FestivalsListComponent},
+            {path: 'festival/:festivalId', component: FestivalDetailsComponent},
+            {path: 'App', component: AppComponent},
+            {path: '', redirectTo: '/App', pathMatch: 'full'},
+            {path: 'editeurs', component: EditeursListComponent}
+        ]),
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideFirestore(() => getFirestore()),
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFirestoreModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [RootComponent]
 })

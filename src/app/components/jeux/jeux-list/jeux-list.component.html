@@ -1,0 +1,25 @@
+
+<table *ngIf="this.hasJeux()">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Joueurs Min</th>
+    <th>Joueurs Max</th>
+    <th>Age Min</th>
+    <th>Age Max</th>
+    <th>Duration</th>
+    <th>Type</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let jeu of this.getEditeur(this.editeurId)?.jeux">
+    <td>{{ jeu.id }}</td>
+    <td>{{ jeu.name }}</td>
+    <td>{{ jeu.nb_joueurs_min }}</td>
+    <td>{{ jeu.nb_joueurs_max }}</td>
+    <td>{{ jeu.age_min }}</td>
+    <td>{{ jeu.age_max }}</td>
+    <td>{{ jeu.duration }}</td>
+    <td>{{ jeu.type }}</td>
+    <td><button (click)="onDelete(jeu)">Delete</button></td>
+  </tr>
+</table>
